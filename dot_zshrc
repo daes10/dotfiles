@@ -25,3 +25,6 @@ export PATH="$HOME/bin:$PATH"  # Add ~/bin to the PATH environment variable
 
 # Starship prompt
 eval "$(starship init zsh)"    # Initialize Starship prompt
+
+# Set Bitwarden ssh-agent
+export SSH_AUTH_SOCK="$HOME/snap/bitwarden/current/.bitwarden-ssh-agent.sock"
