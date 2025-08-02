@@ -19,6 +19,7 @@ zmodload zsh/complist         # Load completion list module for colored completi
 alias ll="ls -alF"            # Long listing with details and indicators
 alias la="ls -A"              # List all except . and ..
 alias grep="grep --color=auto" # Color-highlight grep matches
+alias dump-gnome="mkdir -p ~/.config/gnome-extensions && dconf dump /org/gnome/shell/extensions/ > ~/.config/gnome-extensions/gnome_extension_settings" # Export gnome extension settings
 
 # Path
 export PATH="$HOME/bin:$PATH"  # Add ~/bin to the PATH environment variable
