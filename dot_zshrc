@@ -23,6 +23,10 @@ alias grep='grep --color=auto' # Color-highlight grep matches
 # Path
 export PATH="$HOME/bin:$PATH"  # Add ~/bin to the PATH environment variable
 
+# Set default editor
+export EDITOR=nvim
+export VISUAL=nvim
+
 # Starship prompt
 eval "$(starship init zsh)"    # Initialize Starship prompt
 
