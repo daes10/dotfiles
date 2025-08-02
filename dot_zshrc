@@ -7,7 +7,7 @@ setopt SHARE_HISTORY          # Share history across multiple terminal sessions
 
 # Globbing & Completion
 setopt AUTO_CD                # Automatically cd into a directory if you just type its name
-setopt CORRECT                # Spell correction for commands
+# setopt CORRECT                # Spell correction for commands
 setopt EXTENDED_GLOB          # Enable extended pattern matching features
 
 # Prompt & Syntax Highlighting
