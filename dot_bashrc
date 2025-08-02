@@ -127,3 +127,6 @@ fi
 export EDITOR=nvim
 export VISUAL=nvim
 
+# Aliases
+alias dump-gnome="mkdir -p ~/.config/gnome-extensions && dconf dump /org/gnome/shell/extensions/ > ~/.config/gnome-extensions/gnome_extension_settings" # Export gnome extension settings
+
