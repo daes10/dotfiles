@@ -16,12 +16,13 @@ setopt PROMPT_SUBST           # Allow variable and command substitution in promp
 zmodload zsh/complist         # Load completion list module for colored completions
 
 # Aliases
-alias ll='ls -alF'            # Long listing with details and indicators
-alias la='ls -A'              # List all except . and ..
-alias grep='grep --color=auto' # Color-highlight grep matches
+alias ll="ls -alF"            # Long listing with details and indicators
+alias la="ls -A"              # List all except . and ..
+alias grep="grep --color=auto" # Color-highlight grep matches
 
 # Path
 export PATH="$HOME/bin:$PATH"  # Add ~/bin to the PATH environment variable
+export PATH="$HOME/.local/bin/scripts:$PATH" # Add scripts dir to env variable
 
 # Set default editor
 export EDITOR=nvim
