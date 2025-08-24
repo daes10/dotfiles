@@ -1,0 +1,102 @@
+" ====================================================================
+" VIM keybindings for IdeaVim
+" (paste into ~/.ideavimrc)
+" ====================================================================
+
+" --- Helper: run an IDE action (normal/visual/insert will call these maps)
+" Usage: :action <ActionID>
+" If an action ID doesn't exist for you, replace it with the correct one from the Keymap.
+
+" -------------------------
+" General
+" -------------------------
+" Leader key to SPACE-Key
+let mapleader = " "
+
+" System clipboard helper
+set clipboard+=unnamedplus
+
+map <C-k> :action ActivateEditorComponent<CR>
+
+" -------------------------
+" File Explorer
+" -------------------------
+" Half-page down/up and center
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+" Move between editor tabs (like :bprev / :bnext)
+nmap <S-h> :action PreviousTab<CR>
+nmap <S-l> :action NextTab<CR>
+
+" Enable NERDTree plugin for File Explorer
+set NERDTree
+
+" -------------------------
+" File Explorer
+" -------------------------
+" <leader>e -> open project tool window (like NERDTree in Vim)
+nmap <leader>e :action ActivateProjectToolWindow<CR>
+
+" -------------------------
+" Search
+" -------------------------
+" <leader>f -> search everywhere (like Telescope live_grep)
+nmap <leader>f :action SearchEverywhere<CR>
+
+" <leader>p -> find file (like Telescope find_files)
+nmap <leader>p :action GotoFile<CR>
+
+" -------------------------
+" Search
+" -------------------------
+" mimic NvChad toggleterm mappings
+nmap <leader>h :action ActivateTerminalToolWindow<CR>
+nmap <leader>v :action ActivateTerminalToolWindow<CR>
+nmap <leader>t :action ActivateTerminalToolWindow<CR>
+
+" -------------------------
+" Comments
+" -------------------------
+" Line comment like gcc (like in vim-commentary or nerdcommenter)
+nmap gcc :action CommentByLineComment<CR>
+vmap gc  :action CommentByLineComment<CR>
+
+" Block comment (like in vim-commentary or nerdcommenter)
+nmap gbc :action CommentByBlockComment<CR>
+vmap gb  :action CommentByBlockComment<CR>
+
+" -------------------------
+" Utils
+" -------------------------
+" Reformat code 1
+nmap <leader>lf :action ReformatCode<CR>
+
+" Reformat code 2
+nmap <C-S-f> :action ReformatCode<CR>
+vmap <C-S-f> :action ReformatCode<CR>
+
+" organize imports
+nmap <leader>li :action OptimizeImports<CR>
+
+
+" -------------------------
+" Useful Vim-style editing tweaks
+" -------------------------
+" Move visual block up/down
+vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+
+" Duplicate lines / blocks with Alt+j / Alt+k
+nnoremap <A-j> :t.<CR>
+nnoremap <A-k> :t-1<CR>
+vnoremap <A-j> :t'><CR>gv
+vnoremap <A-k> :t'<-1<CR>gv
+
+" Keep visual selection after indent/outdent
+vnoremap < <gv
+vnoremap > >gv
+
+" Save (Ctrl+S)
+nmap <C-s> :w<CR>
+imap <C-s> <Esc>:w<CR>
