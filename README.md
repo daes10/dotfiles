@@ -1,18 +1,18 @@
 # 🛠️ My Dotfiles
 
-### ⚠️ Work in Progress
-This repo contains my personal dotfiles and setup scripts.
+>⚠️ Work in Progress
+> This repo contains my personal dotfiles and setup scripts.
 
->⚡ Note: Some playbooks and chezmoi extensions are still under development.
+>⚡ Note: Some playbooks and chezmoi extensions are still under active development.
 
 
-### 💡 Purpose
+## 💡 Purpose
 - Automate the setup of my development environment on Ubuntu
 - Keep all config files (dotfiles) in sync across multiple machines
 - Deploy software, tools, and extensions with minimal manual steps
 - Eventually, enable one-command setup for a fresh system
 
-### 🧰 Tech Stack
+## 🧰 Tech Stack
 #### Ansible
  – for automating installations and system configurations
 
@@ -26,10 +26,10 @@ This repo contains my personal dotfiles and setup scripts.
 ### ⚙️ Setup Instructions (WIP)
 -->
 
-### 🧩 Features / Planned
+## 🧩 Features / Planned
 - [ ] Future: one-command setup for a completely fresh Ubuntu install
 - [ ] Extensions via chezmoi and full automation are still in progress — more features coming soon!
 
-### 📝 Usage Notes
+## 📝 Usage Notes
 - This setup is personalized for my workflow — paths, tools, OS and configs may need adjustments if used elsewhere
 - Always backup existing dotfiles before applying this repo
