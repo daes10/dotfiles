@@ -1,0 +1,19 @@
+####################
+# Ansible Inventory
+####################
+
+# Local
+[local]
+localhost ansible_connection=local
+
+
+# Ubuntu Desktop Computers
+
+
+# Testing
+[desktop_ubuntu]
+ubuntu-test.local.lan ansible_user=david
+
+
+# Ubuntu Servers
+
