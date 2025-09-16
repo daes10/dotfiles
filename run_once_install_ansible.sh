@@ -1,12 +1,12 @@
 #!/bin/bash
 
 install_on_fedora() {
-    sudo dnf install -y ansible
+    sudo dnf install -y ansible-core
 }
 
 install_on_ubuntu() {
     sudo apt-get update
-    sudo apt-get install -y ansible
+    sudo apt-get install -y ansible-core
 }
 
 OS="$(uname -s)"
@@ -28,6 +28,6 @@ case "${OS}" in
 esac
 
 
-ansible-playbook ~/.bootstrap/setup.yml --ask-become-pass
+ansible-playbook ~/ansible/bootstrap/setup.yml --ask-become-pass
 
 echo "Ansible installation complete."
