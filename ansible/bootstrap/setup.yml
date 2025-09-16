@@ -1,6 +1,6 @@
 ---
 - name: Update, upgrade and install apt packages on desktop host
-  hosts: desktop-ubuntu
+  hosts: localhost
   become: true
   gather_facts: true
   vars:
