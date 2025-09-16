@@ -6,7 +6,7 @@
 >⚡ Note: Some playbooks and chezmoi extensions are still under active development.
 
 ## ⚙️ How it works
-```
+```bash
 export GITHUB_USERNAME=daes10
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
 ```
