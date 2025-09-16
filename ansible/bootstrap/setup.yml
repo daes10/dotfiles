@@ -1,0 +1,55 @@
+---
+- name: Update, upgrade and install apt packages on desktop host
+  hosts: desktop-ubuntu
+  become: true
+  gather_facts: true
+  vars:
+    # packages within the default apt repo
+    standard_pkgs:
+      - vim
+      - git
+      - curl
+      - atop
+      - bleachbit
+      - diffutils
+      - flameshot
+      - flatpak
+      - gnome-software-plugin-flatpak
+      - gnome-software-plugin-snap
+      - gnome-tweaks
+      - gufw
+      - neovim
+      - ntpdate
+      - pipx
+      - preload
+      - ripgrep
+      - synaptic
+      - timeshift
+      - xclip
+      - zsh
+      - fzf
+
+    # packages from special repos
+    special_pkgs:
+      - fastfetch
+      - gnome-shell-extension-manager
+      - starship
+
+    # packages from external repos
+    external_pkgs:
+      - proton-mail
+      - warp-terminal
+
+  tasks:
+    - name: Update apt package index
+      apt:
+        update_cache: true
+
+    - name: Upgrade all apt packages
+      apt:
+        upgrade: true
+
+    - name: Clean up apt cache
+      apt:
+        autoclean: false
+        autoremove: false
