@@ -53,3 +53,8 @@
       apt:
         autoclean: false
         autoremove: false
+
+    - name: Install standard packages
+      apt:
+        name: "{{ standard_pkgs }}"
+        state: present
