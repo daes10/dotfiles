@@ -41,6 +41,10 @@
       - warp-terminal
 
   tasks:
+    - name: Get my user
+      ansible.builtin.set_fact:
+        remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+
     - name: Update apt package index
       apt:
         update_cache: true
@@ -58,3 +62,8 @@
       apt:
         name: "{{ standard_pkgs }}"
         state: present
+
+    - name: Change shell to zsh
+      ansible.builtin.user:
+        name: "{{ remote_regular_user }}"
+        shell: /usr/bin/zsh
