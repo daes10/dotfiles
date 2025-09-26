@@ -1,0 +1,34 @@
+[user]
+    name = daes10
+
+[core]
+    editor = nvim
+    excludesfile = ~/.config/git/ignore
+
+[color]
+    ui = auto
+
+[alias]
+  s = status                                                                            # git s   →  git status
+  co = checkout                                                                         # git co  →  git checkout
+  br = branch                                                                           # git br  →  git branch
+  cm = commit                                                                           # git cm  →  git commit
+  st = stash                                                                            # git st  →  git stash
+  lg = log --oneline --graph --all --decorate                                           # Shows all commits as a graph, across all branches
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit                         # Like lg but with slightly different formatting
+  amend = commit --amend --no-edit                                                      # take your last commit and change the files, but keep the same message
+
+[push]
+  default = simple                                                                      # only push the current branch to the same name on the remote
+
+[pull]
+  rebase = true                                                                         # Makes git pull use rebase instead of merge by default
+
+[init]
+  defaultBranch = main
+
+[merge]
+  tool = vimdiff
+
+[diff]
+  tool = vimdiff
