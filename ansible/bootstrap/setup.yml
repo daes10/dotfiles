@@ -44,22 +44,23 @@
     - name: Get my user
       ansible.builtin.set_fact:
         remote_regular_user: "{{ ansible_env.SUDO_USER or ansible_user_id }}"
+        remote_user_home: "/home/{{ ansible_env.SUDO_USER or ansible_user_id }}"
 
     - name: Update apt package index
-      apt:
+      ansible.builtin.apt:
         update_cache: true
 
     - name: Upgrade all apt packages
-      apt:
+      ansible.builtin.apt:
         upgrade: true
 
     - name: Clean up apt cache
-      apt:
+      ansible.builtin.apt:
         autoclean: false
         autoremove: false
 
     - name: Install standard packages
-      apt:
+      ansible.builtin.apt:
         name: "{{ standard_pkgs }}"
         state: present
 
@@ -67,3 +68,36 @@
       ansible.builtin.user:
         name: "{{ remote_regular_user }}"
         shell: /usr/bin/zsh
+
+    - name: Ensure fonts directory
+      ansible.builtin.file:
+        path: "{{ remote_user_home }}/.local/share/fonts"
+        state: directory
+        mode: "0755"
+        owner: "{{ remote_regular_user }}"
+
+    - name: Check if FiraCode font already exists
+      ansible.builtin.stat:
+        path: "{{ remote_user_home }}/.local/share/fonts/FiraCode"
+      register: firacode_font_exists
+
+    - name: Ensure FiraCode font directory, if FiraCode not exists
+      when: not firacode_font_exists.stat.exists
+      ansible.builtin.file:
+        path: "{{ remote_user_home }}/.local/share/fonts/FiraCode"
+        state: directory
+        mode: "0755"
+        owner: "{{ remote_regular_user }}"
+
+    - name: Download FiraCode Nerd Font
+      when: not firacode_font_exists.stat.exists
+      ansible.builtin.unarchive:
+        src: https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
+        dest: "{{ remote_user_home }}/.local/share/fonts/FiraCode"
+        remote_src: true
+        mode: "0755"
+        owner: "{{ remote_regular_user }}"
+
+    - name: Refresh font cache
+      command: fc-cache -fv
+      changed_when: false
