@@ -21,8 +21,8 @@ alias la="ls -A"              # List all except . and ..
 alias grep="grep --color=auto" # Color-highlight grep matches
 alias dump-gnome="mkdir -p ~/.config/gnome-extensions && dconf dump /org/gnome/shell/extensions/ > ~/.config/gnome-extensions/gnome_extension_settings.dconf && gsettings get org.gnome.shell enabled-extensions > ~/.config/gnome-extensions/enabled-extensions.list" # Export gnome extension settings & enabled extensions
 alias load-gnome="dconf load /org/gnome/shell/extensions/ < ~/.config/gnome-extensions/gnome_extension_settings.dconf"  # Import gnome extension settings
-alias cm="chezmoi"             # Chezmoi shortening alias
-alias ff="fastfetch"           # start fastfetch
+alias cm="chezmoi"            # Chezmoi shortening alias
+alias ff="neofetch"           # start neofetch
 
 # Path
 export PATH="$HOME/bin:$PATH"  # Add ~/bin to the PATH environment variable
