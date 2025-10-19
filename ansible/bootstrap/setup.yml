@@ -28,12 +28,12 @@
       - xclip
       - zsh
       - fzf
+      - neofetch
+      - starship
 
     # packages from special repos
     special_pkgs:
-      - fastfetch
       - gnome-shell-extension-manager
-      - starship
 
     # packages from external repos
     external_pkgs:
