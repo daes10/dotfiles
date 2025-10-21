@@ -6,9 +6,10 @@
 >⚡ Note: Some playbooks and chezmoi extensions are still under active development.
 
 ## ⚙️ How it works
+##### *chezmoi install in `~/.local/bin`*:
 ```bash
 export GITHUB_USERNAME=daes10
-sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply $GITHUB_USERNAME
+sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply $GITHUB_USERNAME
 ```
 
 ## 💡 Purpose
