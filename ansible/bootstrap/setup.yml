@@ -101,3 +101,28 @@
     - name: Refresh font cache
       command: fc-cache -fv
       changed_when: false
+
+    - name: Install Warp .deb package
+      block:
+        - name: Gather package facts
+          ansible.builtin.package_facts:
+            manager: apt
+
+        - name: Ensure local installer folder exists
+          ansible.builtin.file:
+            path: "{{ ansible_env.HOME }}/.local/share/installers"
+            state: directory
+            mode: '0755'
+
+        - name: Download Warp .deb package for future use
+          ansible.builtin.get_url:
+            url: https://app.warp.dev/download?package=deb
+            dest: "{{ ansible_env.HOME }}/.local/share/installers/warp-terminal.deb"
+            mode: '0644'
+            force: yes
+
+        - name: Install Warp terminal if not already installed
+          become: true
+          ansible.builtin.apt:
+            deb: "{{ ansible_env.HOME }}/.local/share/installers/warp-terminal.deb"
+          when: "'warp-terminal' not in ansible_facts.packages"   
