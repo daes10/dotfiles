@@ -33,8 +33,9 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- -b ~/.local/bin init --apply $GITHUB_USE
 -->
 
 ## 🧩 Features / Planned
-- [ ] Future: one-command setup for a completely fresh Ubuntu install
-- [ ] Extensions via chezmoi and full automation are still in progress — more features coming soon!
+- [x] Future: one-command setup for a completely fresh Ubuntu install
+- [ ] full automation for Gnome-Extensions via chezmoi
+- [ ] extend compability for archlinux
 
 ## 📝 Usage Notes
 - This setup is personalized for my workflow — paths, tools, OS and configs may need adjustments if used elsewhere
