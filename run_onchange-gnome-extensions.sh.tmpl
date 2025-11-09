@@ -1,0 +1,50 @@
+#!/bin/bash
+set -e  # Exit immediately if any command fails
+
+# Ensure that the bootstrap process has already completed
+if [ ! -f "$HOME/.local/state/bootstrap_script_complete" ]; then
+  echo "Skipping GNOME settings import (bootstrap not finished yet)"
+  exit 0
+fi
+
+# Check if dconf is available on the system
+if ! command -v dconf >/dev/null; then
+  echo "Skipping GNOME settings import (dconf not found)"
+  exit 0
+fi
+
+# Import GNOME extension settings from a saved configuration file
+echo "Importing GNOME extension settings..."
+dconf load /org/gnome/shell/extensions/ < "$HOME/.config/gnome-extensions/gnome_extension_settings.dconf"
+
+# Enable all extensions listed in the enabled-extensions.list file
+if [ -f "$HOME/.config/gnome-extensions/enabled-extensions.list" ]; then
+  echo "Enabling listed GNOME extensions..."
+  while read -r ext; do
+    [ -z "$ext" ] && continue  # Skip empty lines
+    gnome-extensions enable "$ext" || echo "Warning: Extension '$ext' not found"
+  done < "$HOME/.config/gnome-extensions/enabled-extensions.list"
+fi
+
+# Disable all installed extensions that are NOT in the list
+echo "Disabling extensions not listed in enabled-extensions.list..."
+if [ -f "$HOME/.config/gnome-extensions/enabled-extensions.list" ]; then
+  # Create a temporary list of enabled extensions for comparison
+  mapfile -t listed_exts < "$HOME/.config/gnome-extensions/enabled-extensions.list"
+
+  # Get all installed extensions
+  while read -r installed_ext; do
+    # Skip empty entries
+    [ -z "$installed_ext" ] && continue
+
+    # Check if the installed extension is listed
+    if [[ ! " ${listed_exts[*]} " =~ " ${installed_ext} " ]]; then
+      gnome-extensions disable "$installed_ext" || echo "Warning: Could not disable '$installed_ext'"
+    fi
+  done < <(gnome-extensions list)
+else
+  echo "No enabled-extensions.list found — skipping disable step."
+fi
+
+echo "GNOME extensions import and synchronization complete!"
+
