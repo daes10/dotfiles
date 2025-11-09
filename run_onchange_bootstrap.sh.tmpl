@@ -2,6 +2,13 @@
 
 # ansible/bootstrap/setup.yml hash: {{ include "ansible/bootstrap/setup.yml" | sha256sum }}
 
+echo "Running bootstrap setup..."
+
 if command -v ansible-playbook &> /dev/null; then
+    echo "Running setup.yml ansible-playbook..."
     ansible-playbook {{ joinPath .chezmoi.sourceDir "ansible/bootstrap/setup.yml" | quote }} --ask-become-pass
 fi
+
+# Mark bootstrap script as completed
+mkdir -p "$HOME/.local/state"
+touch "$HOME/.local/state/bootstrap_script_complete"
