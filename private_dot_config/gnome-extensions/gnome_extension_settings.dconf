@@ -22,6 +22,7 @@ pipeline='pipeline_default'
 
 [blur-my-shell/overview]
 pipeline='pipeline_default'
+style-components=1
 
 [blur-my-shell/panel]
 brightness=0.59999999999999998
@@ -63,7 +64,7 @@ isolate-workspaces=false
 middle-click-action='launch'
 multi-monitor=true
 preferred-monitor=-2
-preferred-monitor-by-connector='HDMI-2'
+preferred-monitor-by-connector='eDP-1'
 pressure-threshold=50.0
 preview-size-scale=0.0
 require-pressure-to-show=true
@@ -112,7 +113,12 @@ scroll-wheel='panel'
 enable-activate-workspace-shortcuts=false
 
 [space-bar/state]
-version=33
+version=34
+
+[system-software-info]
+kernel-style='Compact 2'
+os-style='Extended'
+shell-style='Compact'
 
 [tactile]
 layout-2-col-0=2
