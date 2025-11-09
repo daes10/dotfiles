@@ -38,7 +38,6 @@
     # packages from external repos
     external_pkgs:
       - proton-mail
-      - warp-terminal
 
   tasks:
     - name: Get my user
